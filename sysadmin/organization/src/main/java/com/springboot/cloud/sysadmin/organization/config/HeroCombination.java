@@ -63,7 +63,7 @@ public class HeroCombination {
 //            System.out.println(map);
             //按条件过滤 英雄组合
 //            Map<String, Integer> filterMap = InitHero.filterMapCondition(map, null, null);
-            Map<String, Integer> filterMap = InitHero.filterMapCondition(map, "腥红之月", 6, 4);
+            Map<String, Integer> filterMap = InitHero.filterMapCondition(map, "腥红之月", 6, 6);
 
             filterMap.forEach((k, v) -> {
 //                if (effect.containsKey(k) && ((v >= effect.get(k).get(0) && !Objects.equals("忍者", k))
