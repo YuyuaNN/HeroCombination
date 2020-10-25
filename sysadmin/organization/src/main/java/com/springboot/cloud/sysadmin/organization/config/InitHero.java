@@ -320,6 +320,7 @@ public class InitHero {
             StringBuffer heroSb = new StringBuffer("英雄： ");
             int fee = 0;
             Map<String, Integer> featureMap = new HashMap<String, Integer>();//羁绊详情信息
+            Map<String, Integer> combineMap = new HashMap<String, Integer>();//触发的羁绊
 
             for (Hero hero : stack) {
                 heroSb.append(hero.getName() + "、");
@@ -332,8 +333,17 @@ public class InitHero {
                     }
                 });
             }
+            AtomicInteger combineAmount = new AtomicInteger();//羁绊组合数量
+            featureMap.forEach((k, v) -> {
+                if (HeroCombination.effect.containsKey(k) && ((v >= HeroCombination.effect.get(k).get(0) && !Objects.equals("忍者", k))
+                        || (Objects.equals("忍者", k) && (v == 1 || v == 4)))) {//触发组合效果
+                    combineAmount.getAndIncrement();
+                    combineMap.put(k, v);
+                }
+            });
             System.out.println(heroSb.toString());
             System.out.println(featureMap);
+            System.out.println(combineMap);
             System.out.println("总价：" + fee);
         }
     }
