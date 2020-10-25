@@ -5,7 +5,10 @@ import java.util.*;
 public class HeroCombination {
     public static Stack<Hero> stack = new Stack<Hero>();
     public static Map<String, List<Integer>> effect = new HashMap<String, List<Integer>>();
-    public static Set<Hero> supSet = new HashSet<Hero>();//候选的英雄
+    public static Stack<Hero> stackCal = new Stack<Hero>();
+    public static List<Set<Hero>> supSetList = new ArrayList<Set<Hero>>();//候选的英雄 数组
+    public static Set<Hero> supSet = new HashSet<Hero>();
+
     private static int count = 0;
 
     public static String featureName = "腥红之月";
@@ -18,10 +21,15 @@ public class HeroCombination {
 //        Hero[] heroes = InitHero.initHero();//初始化英雄池
         Map<String, Set<Hero>> heroes = InitHero.initHero(featureName);//初始化英雄池
         combineCal(heroes.get("sup").toArray(new Hero[0]), heroes.get("main").size() - amount, 0, 0); // 选出候选英雄
-        Set<Hero> heroSet = heroes.get("main");
-        heroSet.addAll(supSet);
-        Hero[] heroeArray = heroSet.toArray(new Hero[0]);
-        combine(heroeArray, heroAmount, 0, 0); // 从英雄池数组中选择N个英雄
+        Set<Hero> heroSet = null;
+        for (Set<Hero> set : supSetList) {
+            heroSet = new HashSet<Hero>() {{
+                addAll(heroes.get("main"));
+            }};
+            heroSet.addAll(set);
+            Hero[] heroeArray = heroSet.toArray(new Hero[0]);
+            combine(heroeArray, heroAmount, 0, 0); // 从英雄池数组中选择N个英雄
+        }
         System.out.println("组合次数：" + HeroCombination.count);
     }
 
@@ -76,17 +84,19 @@ public class HeroCombination {
      */
     private static void combineCal(Hero[] array, int toPickNum, int selectedNum, int currentIndex) {
         if (selectedNum == toPickNum) {
-            stack.forEach(e -> {
+            supSet = new HashSet<Hero>();
+            stackCal.forEach(e -> {
                 supSet.add(e);
             });
+            supSetList.add(supSet);
             return;
         }
 
         for (int i = currentIndex; i < array.length; i++) {
-            if (!stack.contains(array[i])) {
-                stack.add(array[i]);
+            if (!stackCal.contains(array[i])) {
+                stackCal.add(array[i]);
                 combineCal(array, toPickNum, selectedNum + 1, i);
-                stack.pop();
+                stackCal.pop();
             }
         }
     }
