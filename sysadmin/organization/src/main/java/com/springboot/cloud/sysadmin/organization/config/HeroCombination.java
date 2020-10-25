@@ -8,11 +8,12 @@ public class HeroCombination {
     public static Set<Hero> supSet = new HashSet<Hero>();//候选的英雄
     private static int count = 0;
 
+    public static String featureName = "腥红之月";
+    public static Integer heroAmount = 8;//英雄数量
+    public static Integer amount = 6;//羁绊数量
+    public static Integer combineAmount = 5;//羁绊组合数量
+
     public static void main(String[] args) {
-        String featureName = "腥红之月";
-        Integer heroAmount = 8;//英雄数量
-        Integer amount = 6;//羁绊数量
-        Integer combineAmount = 5;//羁绊组合数量
         HeroCombination.effect = InitEffect.initEffect();//初始化羁绊特效
 //        Hero[] heroes = InitHero.initHero();//初始化英雄池
         Map<String, Set<Hero>> heroes = InitHero.initHero(featureName);//初始化英雄池
@@ -47,7 +48,7 @@ public class HeroCombination {
 //            System.out.println(map);
             //按条件过滤 英雄组合
 //            Map<String, Integer> filterMap = InitHero.filterMapCondition(map, null, null);
-            Map<String, Integer> filterMap = InitHero.filterMapCondition(map, "腥红之月", 6, 5);
+            Map<String, Integer> filterMap = InitHero.filterMapCondition(map, featureName, amount, combineAmount);
 
             filterMap.forEach((k, v) -> {
                 System.out.println(stack);

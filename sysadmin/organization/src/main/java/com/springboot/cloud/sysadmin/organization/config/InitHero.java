@@ -274,7 +274,7 @@ public class InitHero {
         });
 
         map.put("main", mainSet);
-        map.put("sup", mainSet);
+        map.put("sup", supSet);
 
         return map;
     }
