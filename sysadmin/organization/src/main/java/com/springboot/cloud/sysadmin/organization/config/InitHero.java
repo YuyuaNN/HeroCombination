@@ -5,6 +5,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
 public class InitHero {
+    public static List<Map> combineList = new ArrayList<Map>();//最终的组合结果
+
     /**
      * 初始化 Hero 池
      *
@@ -342,9 +344,15 @@ public class InitHero {
                 }
             });
             System.out.println(heroSb.toString());
-            System.out.println(featureMap);
+//            System.out.println(featureMap);
             System.out.println(combineMap);
             System.out.println("总价：" + fee);
+
+            Map<String, Object> resultMap = new HashMap<String, Object>();
+            resultMap.put("heroList", heroSb.toString());
+            resultMap.put("combineMap", combineMap);
+            resultMap.put("fee", fee);
+            combineList.add(resultMap);
         }
     }
 }

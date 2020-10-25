@@ -17,6 +17,13 @@ public class HeroCombination {
     public static Integer combineAmount = 5;//羁绊组合数量
 
     public static void main(String[] args) {
+        HeroCombination.init();
+    }
+
+    /**
+     * 执行程序入口
+     */
+    public static void init() {
         HeroCombination.effect = InitEffect.initEffect();//初始化羁绊特效
 //        Hero[] heroes = InitHero.initHero();//初始化英雄池
         Map<String, Set<Hero>> heroes = InitHero.initHero(featureName);//初始化英雄池
@@ -30,6 +37,7 @@ public class HeroCombination {
             Hero[] heroeArray = heroSet.toArray(new Hero[0]);
             combine(heroeArray, heroAmount, 0, 0); // 从英雄池数组中选择N个英雄
         }
+//        InitHero.combineList;
         System.out.println("组合次数：" + HeroCombination.count);
     }
 
