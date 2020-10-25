@@ -59,8 +59,7 @@ public class HeroCombination {
             Map<String, Integer> filterMap = InitHero.filterMapCondition(map, featureName, amount, combineAmount);
 
             filterMap.forEach((k, v) -> {
-                System.out.println(stack);
-                System.out.println(k + ":" + v);
+                InitHero.printHeroFetters(stack);
                 HeroCombination.count++;
             });
 //            HeroCombination.count++;

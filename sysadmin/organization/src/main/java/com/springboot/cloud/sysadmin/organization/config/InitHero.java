@@ -310,4 +310,31 @@ public class InitHero {
         return filterMap;
     }
 
+    /**
+     * 打印英雄羁绊
+     *
+     * @param stack 英雄组合
+     */
+    public static void printHeroFetters(Stack<Hero> stack) {
+        if (Objects.nonNull(stack)) {
+            StringBuffer heroSb = new StringBuffer("英雄： ");
+            int fee = 0;
+            Map<String, Integer> featureMap = new HashMap<String, Integer>();//羁绊详情信息
+
+            for (Hero hero : stack) {
+                heroSb.append(hero.getName() + "、");
+                fee += hero.getFee();
+                hero.getFeatures().forEach(feature -> {
+                    if (!featureMap.containsKey(feature)) {
+                        featureMap.put(feature, 1);
+                    } else {
+                        featureMap.put(feature, featureMap.get(feature) + 1);
+                    }
+                });
+            }
+            System.out.println(heroSb.toString());
+            System.out.println(featureMap);
+            System.out.println("总价：" + fee);
+        }
+    }
 }
