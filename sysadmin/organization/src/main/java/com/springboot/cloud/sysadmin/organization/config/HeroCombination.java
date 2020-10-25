@@ -9,13 +9,13 @@ public class HeroCombination {
     private static int count = 0;
 
     public static void main(String[] args) {
-        String heroName = "腥红之月";
+        String featureName = "腥红之月";
         Integer heroAmount = 8;//英雄数量
         Integer amount = 6;//羁绊数量
         Integer combineAmount = 5;//羁绊组合数量
         HeroCombination.effect = InitEffect.initEffect();//初始化羁绊特效
 //        Hero[] heroes = InitHero.initHero();//初始化英雄池
-        Map<String, Set<Hero>> heroes = InitHero.initHero(heroName);//初始化英雄池
+        Map<String, Set<Hero>> heroes = InitHero.initHero(featureName);//初始化英雄池
         combineCal(heroes.get("sup").toArray(new Hero[0]), heroes.get("main").size() - amount, 0, 0); // 选出候选英雄
         Set<Hero> heroSet = heroes.get("main");
         heroSet.addAll(supSet);

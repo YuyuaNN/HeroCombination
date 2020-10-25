@@ -110,11 +110,11 @@ public class InitHero {
         set.add(hero);
         hero = new Hero("北地之怒", 4, new String[]{"福星", "重装战士"});
         set.add(hero);
-        hero = new Hero("戏命师", 4, new String[]{"猩红之月", "神射手"});
+        hero = new Hero("戏命师", 4, new String[]{"腥红之月", "神射手"});
         set.add(hero);
         hero = new Hero("暗裔剑魔", 4, new String[]{"腥红之月", "重装战士"});
         set.add(hero);
-        hero = new Hero("时光守护者", 5, new String[]{"猩红之月", "秘术师"});
+        hero = new Hero("时光守护者", 5, new String[]{"腥红之月", "秘术师"});
         set.add(hero);
         hero = new Hero("盲僧", 5, new String[]{"天神", "决斗大师"});
         set.add(hero);
@@ -140,7 +140,7 @@ public class InitHero {
      *
      * @return
      */
-    public static Map<String, Set<Hero>> initHero(String heroName) {
+    public static Map<String, Set<Hero>> initHero(String featureName) {
         Map<String, Set<Hero>> map = new HashMap<String, Set<Hero>>();
         Set<Hero> mainSet = new HashSet<Hero>();//主选英雄
         Set<Hero> supSet = new HashSet<Hero>();//候选英雄
@@ -244,11 +244,11 @@ public class InitHero {
         set.add(hero);
         hero = new Hero("北地之怒", 4, new String[]{"福星", "重装战士"});
         set.add(hero);
-        hero = new Hero("戏命师", 4, new String[]{"猩红之月", "神射手"});
+        hero = new Hero("戏命师", 4, new String[]{"腥红之月", "神射手"});
         set.add(hero);
         hero = new Hero("暗裔剑魔", 4, new String[]{"腥红之月", "重装战士"});
         set.add(hero);
-        hero = new Hero("时光守护者", 5, new String[]{"猩红之月", "秘术师"});
+        hero = new Hero("时光守护者", 5, new String[]{"腥红之月", "秘术师"});
         set.add(hero);
         hero = new Hero("盲僧", 5, new String[]{"天神", "决斗大师"});
         set.add(hero);
@@ -266,7 +266,7 @@ public class InitHero {
         set.add(hero);
 
         set.forEach(e -> {
-            if (Objects.equals(heroName, e.getName())) {
+            if (e.getFeatures().contains(featureName)) {
                 mainSet.add(e);
             } else {
                 supSet.add(e);

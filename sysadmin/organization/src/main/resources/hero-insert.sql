@@ -86,9 +86,9 @@ INSERT INTO `hero` VALUES (45, '	放逐之刃	', 4, '	灵魂莲华夜幽	,	神�
 INSERT INTO `hero` VALUES (46, '	暮光之眼	', 4, '	忍者	,	宗师	,	秘术师	', NULL, 'N', '2020-10-24 11:56:44', '2020-10-24 11:56:44', NULL, NULL);
 INSERT INTO `hero` VALUES (47, '	九尾妖狐	', 4, '	灵魂莲华明昼	,	魔法师			', NULL, 'N', '2020-10-24 11:56:44', '2020-10-24 11:56:44', NULL, NULL);
 INSERT INTO `hero` VALUES (48, '	北地之怒	', 4, '	福星	,	重装战士			', NULL, 'N', '2020-10-24 11:56:44', '2020-10-24 11:56:44', NULL, NULL);
-INSERT INTO `hero` VALUES (49, '	戏命师	', 4, '	猩红之月	,	神射手			', NULL, 'N', '2020-10-24 11:56:44', '2020-10-24 11:56:44', NULL, NULL);
+INSERT INTO `hero` VALUES (49, '	戏命师	', 4, '	腥红之月	,	神射手			', NULL, 'N', '2020-10-24 11:56:44', '2020-10-24 11:56:44', NULL, NULL);
 INSERT INTO `hero` VALUES (50, '	暗裔剑魔	', 4, '	腥红之月	,	重装战士			', NULL, 'N', '2020-10-24 11:56:44', '2020-10-24 11:56:44', NULL, NULL);
-INSERT INTO `hero` VALUES (51, '	时光守护者	', 5, '	猩红之月	,	秘术师			', NULL, 'N', '2020-10-24 11:56:44', '2020-10-24 11:56:44', NULL, NULL);
+INSERT INTO `hero` VALUES (51, '	时光守护者	', 5, '	腥红之月	,	秘术师			', NULL, 'N', '2020-10-24 11:56:44', '2020-10-24 11:56:44', NULL, NULL);
 INSERT INTO `hero` VALUES (52, '	盲僧	', 5, '	天神	,	决斗大师			', NULL, 'N', '2020-10-24 11:56:44', '2020-10-24 11:56:44', NULL, NULL);
 INSERT INTO `hero` VALUES (53, '	探险家	', 5, '	永恒之森	,	耀光使			', NULL, 'N', '2020-10-24 11:56:44', '2020-10-24 11:56:44', NULL, NULL);
 INSERT INTO `hero` VALUES (54, '	影流之主	', 5, '	天煞	,	夜影			', NULL, 'N', '2020-10-24 11:56:44', '2020-10-24 11:56:44', NULL, NULL);
