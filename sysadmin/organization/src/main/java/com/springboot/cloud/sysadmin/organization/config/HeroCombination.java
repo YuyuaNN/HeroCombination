@@ -1,6 +1,7 @@
 package com.springboot.cloud.sysadmin.organization.config;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class HeroCombination {
     public static Stack<Hero> stack = new Stack<Hero>();
@@ -8,13 +9,11 @@ public class HeroCombination {
     public static Stack<Hero> stackCal = new Stack<Hero>();
     public static List<Set<Hero>> supSetList = new ArrayList<Set<Hero>>();//候选的英雄 数组
     public static Set<Hero> supSet = new HashSet<Hero>();
-
-    private static int count = 0;
-
     public static String featureName = "腥红之月";
     public static Integer heroAmount = 8;//英雄数量
     public static Integer amount = 6;//羁绊数量
     public static Integer combineAmount = 5;//羁绊组合数量
+    private static int count = 0;
 
     public static void main(String[] args) {
         HeroCombination.init();
@@ -37,7 +36,35 @@ public class HeroCombination {
             Hero[] heroeArray = heroSet.toArray(new Hero[0]);
             combine(heroeArray, heroAmount, 0, 0); // 从英雄池数组中选择N个英雄
         }
-//        InitHero.combineList;
+//        List<Map> combineList = InitHero.combineList.stream().sorted(Comparator.comparingInt(s -> (Integer) s.get("combineCount"))).collect(Collectors.toList());
+        List<Map> combineList = InitHero.combineList.stream().sorted(((s1, s2) -> {
+                    Integer combineCount = (Integer) s1.get("combineCount");
+                    Integer combineCount2 = (Integer) s2.get("combineCount");
+                    Integer fee = (Integer) s1.get("fee");
+                    Integer fee2 = (Integer) s2.get("fee");
+                    if (combineCount > combineCount2) {
+                        return -1;//倒序
+                    } else if (combineCount < combineCount2) {
+                        return 1;
+                    } else if (combineCount == combineCount2) {
+                        if (fee > fee2) {
+                            return -1;//倒序
+                        } else if (fee < fee2) {
+                            return 1;
+                        } else if (fee == fee) {
+                            return 0;
+                        }
+                    }
+                    return 0;
+                })
+        ).collect(Collectors.toList());
+        //打印结果
+        combineList.forEach(resultMap -> {
+            System.out.println(resultMap.get("heroList"));
+            System.out.println(resultMap.get("combineMap"));
+            System.out.println("羁绊数量：" + resultMap.get("combineCount"));
+            System.out.println("总价：" + resultMap.get("fee"));
+        });
         System.out.println("组合次数：" + HeroCombination.count);
     }
 

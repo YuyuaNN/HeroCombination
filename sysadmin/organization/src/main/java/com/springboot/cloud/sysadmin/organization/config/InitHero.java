@@ -343,14 +343,14 @@ public class InitHero {
                     combineMap.put(k, v);
                 }
             });
-            System.out.println(heroSb.toString());
-//            System.out.println(featureMap);
-            System.out.println(combineMap);
-            System.out.println("总价：" + fee);
+//            System.out.println(heroSb.toString());
+//            System.out.println(combineMap);
+//            System.out.println("总价：" + fee);
 
             Map<String, Object> resultMap = new HashMap<String, Object>();
             resultMap.put("heroList", heroSb.toString());
             resultMap.put("combineMap", combineMap);
+            resultMap.put("combineCount", combineMap.size());
             resultMap.put("fee", fee);
             combineList.add(resultMap);
         }
