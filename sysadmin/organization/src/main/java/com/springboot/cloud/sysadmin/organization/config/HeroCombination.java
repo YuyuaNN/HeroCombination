@@ -37,27 +37,29 @@ public class HeroCombination {
             combine(heroeArray, heroAmount, 0, 0); // 从英雄池数组中选择N个英雄
         }
 //        List<Map> combineList = InitHero.combineList.stream().sorted(Comparator.comparingInt(s -> (Integer) s.get("combineCount"))).collect(Collectors.toList());
-        List<Map> combineList = InitHero.combineList.stream().sorted(((s1, s2) -> {
-                    Integer combineCount = (Integer) s1.get("combineCount");
-                    Integer combineCount2 = (Integer) s2.get("combineCount");
-                    Integer fee = (Integer) s1.get("fee");
-                    Integer fee2 = (Integer) s2.get("fee");
-                    if (combineCount > combineCount2) {
-                        return -1;//倒序
-                    } else if (combineCount < combineCount2) {
-                        return 1;
-                    } else if (combineCount == combineCount2) {
-                        if (fee > fee2) {
-                            return -1;//倒序
-                        } else if (fee < fee2) {
-                            return 1;
-                        } else if (fee == fee) {
-                            return 0;
-                        }
-                    }
-                    return 0;
-                })
-        ).collect(Collectors.toList());
+        List<Map> combineList = InitHero.combineList.stream().sorted(Comparator.comparingInt(HeroCombination::comparingByCombineCount).reversed()
+                .thenComparing(HeroCombination::comparingByFee).reversed()).collect(Collectors.toList());
+//        List<Map> combineList = InitHero.combineList.stream().sorted(((s1, s2) -> {
+//                    Integer combineCount = (Integer) s1.get("combineCount");
+//                    Integer combineCount2 = (Integer) s2.get("combineCount");
+//                    Integer fee = (Integer) s1.get("fee");
+//                    Integer fee2 = (Integer) s2.get("fee");
+//                    if (combineCount > combineCount2) {
+//                        return -1;//倒序
+//                    } else if (combineCount < combineCount2) {
+//                        return 1;
+//                    } else if (combineCount == combineCount2) {
+//                        if (fee > fee2) {
+//                            return -1;//倒序
+//                        } else if (fee < fee2) {
+//                            return 1;
+//                        } else if (fee == fee) {
+//                            return 0;
+//                        }
+//                    }
+//                    return 0;
+//                })
+//        ).collect(Collectors.toList());
         //打印结果
         combineList.forEach(resultMap -> {
             System.out.println(resultMap.get("heroList"));
@@ -133,6 +135,14 @@ public class HeroCombination {
                 stackCal.pop();
             }
         }
+    }
+
+    public static Integer comparingByCombineCount(Map map) {
+        return (Integer) map.get("combineCount");
+    }
+
+    public static Integer comparingByFee(Map map) {
+        return (Integer) map.get("fee");
     }
 
 }
